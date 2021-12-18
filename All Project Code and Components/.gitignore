@@ -1,0 +1,21 @@
+
+# ignore all .env files
+.env
+heroku/.ev
+
+# ignore node_modules. The .dockerignore should prevent these anyway, but JIC.
+node_modules/
+
+.DS_Store
+.vscode/.DS_Store
+heroku/.DS_Store
+db/.DS_Store
+db/init_data/.DS_Store
+src/.DS_Store
+src/resources/.DS_Store
+src/resources/css/.DS_Store
+src/resources/img/.DS_Store
+src/resources/js/.DS_Store
+src/views/.DS_Store
+src/views/pages/.DS_Store
+src/views/partials/.DS_Store

@@ -1,0 +1,128 @@
+/* Table 1(Student) Each student has a student ID Primary*().  Each student can have multiple friends. Each student has a name and major.
+Maybe student table also include a friends1...friendsX columns. Each student can have a max of 5 classes
+
+
+/* Classes Each class will have class ID. Name, Class Code, It will have a professor, class desc, STUDENT ID COL
+
+
+fRIENDS MAYBVE */
+
+/*SELECT * FROM student */
+CREATE TABLE IF NOT EXISTS students(
+  ID SERIAL PRIMARY KEY,      
+  student_name VARCHAR(30) NOT NULL,   
+  major VARCHAR(30),
+  friend_count INT,
+  email VARCHAR(30) NOT NULL UNIQUE,
+  password_ VARCHAR(30) NOT NULL,
+  admin BOOLEAN NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS classes(
+    ID INT PRIMARY KEY,
+    class_name VARCHAR(90),
+    class_description VARCHAR(2000)
+);
+CREATE TABLE IF NOT EXISTS sections(
+    ID INT PRIMARY KEY,
+    class_name int,
+    professor VARCHAR(30)
+);
+
+
+INSERT INTO students(student_name,major,friend_count,email,password_,admin) 
+VALUES ('Eli','Computer Science',0,'eli@gmail.com','password',True),
+('Micheal','Computer Engineering',100,'Micheal@edu.com','1234',False),
+('Logan','Computer Science',50,'Logan@tall.com','iAmTall',False),
+('Eddy','Computer Science',420,'Eddy@colorado.com','iAmEddy',False),
+('Maya','Computer Science',2,'Maya@pink.com','IlikePink',False);
+
+
+CREATE TABLE IF NOT EXISTS sections(
+    ID INT PRIMARY KEY,
+    class_ID INT,
+    professor VARCHAR(30)
+);
+
+
+INSERT INTO sections(ID,ID,professor)
+VALUES (30309,'Software Development Methods and Tools','Corey'),
+(39692,'Algorithms','Bo Wagoner'),
+(39704,'Design and Analysis of Operating Systems','Carey Herman');
+
+CREATE TABLE IF NOT EXISTS enrolled(
+    ID SERIAL PRIMARY KEY,
+    student_ID INT,
+    section_ID INT
+ );
+
+INSERT INTO enrolled(student_ID,section_ID)
+VALUES (1,30309),(2,30309),(1,39704),(3,39704),(4,39704);
+
+
+
+INSERT INTO classes(ID,class_name,class_description)
+VALUES (30309,'Software Development Method and Tools','Covers tools and techniques for successful software development with a strong focus on best \
+    practices used in industry. Students work in small teams to complete a semester-long application \
+    development project. Students learn front-end design and construction using HTML & CSS, back-end \
+    database design and construction, and full-stack integration. Students gain exposure to agile \
+    methodologies, web services, distributed version control, requirements definition, automated \
+    integration testing, and cloud-based application deployment. Same as CSPB 3308.');
+
+    
+
+    INSERT INTO classes(ID,class_name,class_description)
+    VALUES (39692, 'Algorithms','Covers the fundamentals of algorithms and various algorithmic strategies, including time and \
+    space complexity, sorting algorithms, recurrence relations, divide and conquer algorithms, greedy \
+    algorithms, dynamic programming, linear programming, graph algorithms, problems in P and NP, and \
+    approximation algorithms. Same as CSPB 3104.');
+
+
+
+    INSERT INTO classes(ID,class_name,class_description)
+    VALUES (39704, 'Design and Analysis of Operation Systems','Analyzes the software that extends hardware to provide a computing environment, including the \
+    role of linkers, file systems, resource sharing, security and networking. Studies the history of \
+    operating system organization and design and their influence on security, functionality and \
+    reliability. Same as CSPB 3753.');
+
+
+    
+
+
+
+    SELECT * FROM sections inner join enrolled ON sections.id = enrolled.section_id WHERE student_id = '1';
+
+
+/* make a query to add a student to a select class*/
+
+INSERT INTO enrolled(student_ID,section_ID)
+VALUES(student_ID, section_ID);
+
+
+INSERT INTO enrolled(student_ID,section_ID)
+VALUES(1,30309),(1,39704);
+
+DELETE FROM enrolled
+WHERE enrolled.student_ID = 1 AND enrolled.section_ID = 30309;
+
+
+
+
+SELECT * FROM classes WHERE (SELECT class_ID FROM sections
+
+
+SELECT class_ID FROM sections WHERE student_ID = 1;
+
+
+SELECT classes.class_name,classes.class_description, sections.professor, classes.class_id, sections.id,enrolled.student_id \
+FROM classes 
+INNER JOIN sections on sections.class_id = classes.class_id 
+INNER JOIN enrolled ON enrolled.section_id = sections.id 
+WHERE enrolled.student_id != 3;
+   
+
+#Add friend from their name to pending friends list
+
+
+update friends set friends_pending = array_append(friends_pending, 3) where student_id=1;
+
